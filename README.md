@@ -14,5 +14,13 @@
 >
 > 첫번째 라이브러리에서는 Calendar의 각 cell마다 drawable 만 지정할 수 있지만, 두번째 라이브러리는 TextView와 ImageView를 커스텀할 수 있기 때문에 좀 더 제 프로젝트에 적합하다고 판단했기 때문입니다.
 
-1. 
+
+
+1. 캘린더 뷰를 만들기 전에 뷰에 들어갈 Calendar 클래스를 만들어주고
+
+   Room을 활용하기 위한 database, dao를 만들어주었다.
+
+   Firebase를 통해 실시간으로 일정을 서로 공유하는 기능을 구현할 것이고
+
+   Data, View Binding과 LiveData, ViewModel을 사용해보려한다.
 
