@@ -1,5 +1,7 @@
 package com.e.prototype.mvvm.feature.calendar
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 
 @Dao
@@ -14,7 +16,7 @@ interface ScheduleDao {
     fun delete(schedule: Schedule)
 
     @Query("SELECT * FROM Schedule")
-    fun getAll(): List<Schedule>
+    fun getAll(): MutableLiveData<List<Schedule>>
 
     @Query("SELECT * From Schedule WHERE id == (:id)")
     fun getSchedule(id: String): Schedule

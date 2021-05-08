@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Schedule(
-    @ColumnInfo val id: String,
+    @PrimaryKey val id: String,
     @ColumnInfo val studyId: String,
     @ColumnInfo val title: String,
     @ColumnInfo val content: String,
