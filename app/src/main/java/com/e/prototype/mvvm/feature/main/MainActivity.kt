@@ -4,14 +4,15 @@ import android.app.Application
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.room.Room
 import com.e.prototype.R
-import com.e.prototype.databinding.ActivityMainBinding
 import com.e.prototype.mvvm.feature.calendar.CalendarFragment
+import com.e.prototype.mvvm.feature.calendar.ScheduleDialog
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
 
     private val viewModel: ScheduleViewModel by lazy {
@@ -28,7 +29,4 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
-
-
 }
