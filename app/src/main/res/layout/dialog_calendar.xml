@@ -5,17 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:viewBindingIgnore="true">
-
-    <TextView
-        android:id="@+id/cheduleDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="**-**-**"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+    android:id="@+id/dialog_calendar"
+    >
 
     <TextView
         android:id="@+id/textTitle"
@@ -24,7 +15,7 @@
         android:text="일정"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cheduleDate"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
         android:id="@+id/editText"
