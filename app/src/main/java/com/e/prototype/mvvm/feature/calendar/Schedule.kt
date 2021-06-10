@@ -6,11 +6,13 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Schedule(
-    @PrimaryKey(autoGenerate = true) val id: String,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo val isStudy: Boolean,
-    @ColumnInfo val roomId: String,
+    @ColumnInfo val studyId: String? = null,
+    @ColumnInfo val roomId: String? = null,
     @ColumnInfo val title: String,
     @ColumnInfo val content: String,
+    @ColumnInfo val date: String,
     @ColumnInfo val hours: Int
 )
 

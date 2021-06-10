@@ -16,7 +16,7 @@ interface ScheduleDao {
     fun delete(schedule: Schedule)
 
     @Query("SELECT * FROM Schedule")
-    fun getAll(): MutableLiveData<List<Schedule>>
+    fun getAll(): LiveData<List<Schedule>>
 
     @Query("SELECT * From Schedule WHERE id == (:id)")
     fun getSchedule(id: String): Schedule
