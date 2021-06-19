@@ -56,7 +56,7 @@ class CalendarFragment: Fragment(), ScheduleDialog.NoticeDialogListener {
             }
         }
 
-        viewModel.scheduleList.observe(this, nameObserver)
+        viewModel.scheduleList.observe(viewLifecycleOwner, nameObserver)
         binding.calendarMaterial.setOnDayLongClickListener(object : OnDayLongClickListener {
             override fun onDayLongClick(eventDay: EventDay) {
                 val date = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(eventDay.calendar.time).toString()

@@ -1,20 +1,38 @@
 package com.e.prototype.mvvm.feature.community.gossip
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.e.prototype.R
+import com.e.prototype.mvvm.feature.community.post.Post
 
-class GossipAdapter(private val dataSet:Array<String>): RecyclerView.Adapter<GossipAdapter.ViewHolder>(){
+class GossipAdapter(private val onClick: (Post) -> Unit):
+    ListAdapter<Post, GossipAdapter.ViewHolder>(GossipDiffCallback){
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        //val textView: TextView
 
+    class ViewHolder(itemView: View, val onClick: (Post) -> Unit) :
+        RecyclerView.ViewHolder(itemView) {
+        private val numTextView: TextView = itemView.findViewById(R.id.text_gossip_num)
+        private val titleTextView: TextView = itemView.findViewById(R.id.text_gossip_title)
+        private var currentPost: Post? = null
         init {
-            // Define click listener for the ViewHolder's View.
-            //textView = view.findViewById(R.id.textView)
+            itemView.setOnClickListener {
+                currentPost?.let {
+                    onClick(it)
+                }
+            }
+        }
+
+        fun bind(post: Post) {
+            Log.d("바인드 됐냐", "ㅇㅇㅇ")
+            currentPost = post
+            numTextView.text = post.id.toString()
+            titleTextView.text = post.title
         }
     }
 
@@ -22,15 +40,22 @@ class GossipAdapter(private val dataSet:Array<String>): RecyclerView.Adapter<Gos
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.item_gossip, viewGroup, false)
 
-        return ViewHolder(view)
+        return ViewHolder(view, onClick)
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
-        //viewHolder.textView.text = dataSet[position]
+        val post = getItem(position)
+        viewHolder.bind(post)
     }
 
-    override fun getItemCount() = dataSet.size
+}
+
+object GossipDiffCallback : DiffUtil.ItemCallback<Post>() {
+    override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
+        return oldItem == newItem
+    }
+
+    override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
+        return oldItem.id == newItem.id
+    }
 }

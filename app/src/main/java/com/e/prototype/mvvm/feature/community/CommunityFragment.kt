@@ -1,18 +1,23 @@
 package com.e.prototype.mvvm.feature.community
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import com.e.prototype.R
 import com.e.prototype.databinding.FragmentCommunityBinding
-import com.e.prototype.mvvm.feature.community.gossip.GossipFragment
-import java.util.*
+import com.e.prototype.mvvm.feature.community.post.PostActivity
 
 
-class CommunityFragment : Fragment() {
+class CommunityFragment : Fragment(), View.OnClickListener {
+
+    private var isFabOpen = false
+    private lateinit var fabOpen : Animation
+    private lateinit var fabClose: Animation
 
     private var _binding: FragmentCommunityBinding? = null
     private val binding get() = _binding!!
@@ -28,33 +33,46 @@ class CommunityFragment : Fragment() {
         binding.viewPager.adapter = PagerAdapter(childFragmentManager)
         binding.tabs.setupWithViewPager(binding.viewPager)
 
+        binding.fabMain.setOnClickListener(this)
+        binding.fabGossip.setOnClickListener(this)
+        binding.fabInterview.setOnClickListener(this)
+        binding.fabCoverLetter.setOnClickListener(this)
+
+        fabOpen = AnimationUtils.loadAnimation(context, R.anim.fab_open)
+        fabClose = AnimationUtils.loadAnimation(context, R.anim.fab_close)
 
         return view
     }
 
-    private class PagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
-
-        override fun getItem(position: Int): Fragment {
-            val fragment = when(position) {
-                0 -> GossipFragment()
-                else -> GossipFragment()
+    override fun onClick(v: View?) {
+        when(v?.id) {
+            R.id.fab_main -> {
+                anim()
             }
-            return fragment
-        }
 
-        override fun getPageTitle(position: Int): CharSequence? {
-            val title = when(position)
-            {
-                0->"잡담"
-                1->"자소서"
-                2->"면접"
-                3->"관심글"
-                else -> "잡담"
+            R.id.fab_gossip -> {
+                val intent = Intent(activity, PostActivity::class.java)
+                intent.putExtra("kind", 0)
+                startActivity(intent)
             }
-            return title
         }
+    }
 
-        override fun getCount(): Int = 4
-
+    private fun anim() {
+        if(isFabOpen) {
+            binding.fabGossip.show()
+            binding.fabCoverLetter.show()
+            binding.fabInterview.show()
+            binding.fabGossip.startAnimation(fabClose)
+            binding.fabCoverLetter.startAnimation(fabClose)
+            binding.fabInterview.startAnimation(fabClose)
+            isFabOpen = false
+        }
+        else {
+            binding.fabGossip.startAnimation(fabOpen)
+            binding.fabCoverLetter.startAnimation(fabOpen)
+            binding.fabInterview.startAnimation(fabOpen)
+            isFabOpen = true
+        }
     }
 }
