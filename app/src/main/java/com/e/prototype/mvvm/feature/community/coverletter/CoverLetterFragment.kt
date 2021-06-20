@@ -1,4 +1,4 @@
-package com.e.prototype.mvvm.feature.community.gossip
+package com.e.prototype.mvvm.feature.community.coverletter
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,16 +12,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
-import com.e.prototype.databinding.FragmentGossipBinding
+import com.e.prototype.databinding.FragmentCoverLetterBinding
 import com.e.prototype.mvvm.feature.community.post.Post
 import com.e.prototype.mvvm.feature.community.post.PostDetailActivity
 import com.e.prototype.mvvm.feature.main.PostViewModel
 
-class GossipFragment : Fragment() {
+class CoverLetterFragment: Fragment() {
 
-
-    private var _binding: FragmentGossipBinding? = null
+    private var _binding : FragmentCoverLetterBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: PostViewModel
 
@@ -30,34 +28,33 @@ class GossipFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentGossipBinding.inflate(inflater, container, false)
 
+        _binding = FragmentCoverLetterBinding.inflate(inflater, container, false)
         val view = binding.root
-        binding.recyclerGossip.layoutManager = LinearLayoutManager(context)
+
+        binding.recyclerCoverLetter.layoutManager = LinearLayoutManager(context)
 
         activity?.run {
             viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(this.application))
                 .get(PostViewModel::class.java)
         }
 
-        val headerAdapter = GossipHeaderAdapter()
-        val gossipAdapter = GossipAdapter{ post -> adapterOnClick(post)}
-        val concatAdapter = ConcatAdapter(headerAdapter, gossipAdapter)
+        val coverLetterHeaderAdapter = CoverLetterHeaderAdapter()
+        val coverLetterAdapter = CoverLetterAdapter{ post -> adapterOnClick(post)}
+        val concatAdapter = ConcatAdapter(coverLetterHeaderAdapter, coverLetterAdapter)
 
-        val recyclerView: RecyclerView = binding.recyclerGossip
+        val recyclerView: RecyclerView = binding.recyclerCoverLetter
         recyclerView.adapter = concatAdapter
 
-        viewModel.gossipList.observe(viewLifecycleOwner, Observer<List<Post>>{ postList ->
+        viewModel.coverLetterList.observe(viewLifecycleOwner, Observer<List<Post>>{ postList ->
             Log.d("ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ", postList.size.toString())
-            gossipAdapter.submitList(postList)
+            coverLetterAdapter.submitList(postList)
         })
-
 
         return view
     }
 
     private fun adapterOnClick(post: Post) {
-
         val intent = Intent(activity, PostDetailActivity::class.java)
         intent.putExtra("PostId", post.id)
         startActivity(intent)

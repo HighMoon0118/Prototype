@@ -1,19 +1,10 @@
-package com.e.prototype.mvvm.feature.main
+package com.e.prototype.mvvm.feature.community.post
 
 import android.app.Application
 import android.os.AsyncTask
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.room.Room
-import com.e.prototype.mvvm.feature.calendar.Schedule
-import com.e.prototype.mvvm.feature.calendar.ScheduleDao
-import com.e.prototype.mvvm.feature.calendar.ScheduleDatabase
-import com.e.prototype.mvvm.feature.community.post.Post
-import com.e.prototype.mvvm.feature.community.post.PostDao
-import com.e.prototype.mvvm.feature.community.post.PostDatabase
 
-class PostViewModel(application: Application) : AndroidViewModel(application) {
+class AddPostViewModel(application: Application) : AndroidViewModel(application) {
 
     private val postDao: PostDao
 

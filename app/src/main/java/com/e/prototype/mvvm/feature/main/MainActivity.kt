@@ -7,6 +7,7 @@ import com.e.prototype.R
 import com.e.prototype.databinding.ActivityMainBinding
 import com.e.prototype.mvvm.feature.calendar.CalendarFragment
 import com.e.prototype.mvvm.feature.community.CommunityFragment
+import com.e.prototype.mvvm.feature.study.StudyFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.view.*
 
@@ -40,6 +41,15 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                     .commit()
                 return true
             }
+
+            R.id.bnv_study -> {
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.frameLayout, StudyFragment())
+                    .commit()
+                return true
+            }
+
             R.id.bnv_community -> {
                 supportFragmentManager
                     .beginTransaction()
@@ -50,4 +60,5 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         }
         return false
     }
+
 }

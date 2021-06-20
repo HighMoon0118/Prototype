@@ -1,13 +1,12 @@
 package com.e.prototype.mvvm.feature.calendar
 
-import android.app.Application
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.fragment.app.Fragment
@@ -57,6 +56,8 @@ class CalendarFragment: Fragment(), ScheduleDialog.NoticeDialogListener {
         }
 
         viewModel.scheduleList.observe(viewLifecycleOwner, nameObserver)
+
+
         binding.calendarMaterial.setOnDayLongClickListener(object : OnDayLongClickListener {
             override fun onDayLongClick(eventDay: EventDay) {
                 val date = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(eventDay.calendar.time).toString()

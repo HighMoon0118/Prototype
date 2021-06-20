@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/text_post_title"
+        android:id="@+id/text_add_post_title"
         android:text="제목"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,8 +19,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edit_post_title"
-        app:layout_constraintTop_toBottomOf="@+id/text_post_title"
+        android:id="@+id/edit_add_post_title"
+        app:layout_constraintTop_toBottomOf="@+id/text_add_post_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="5dp"
@@ -36,9 +36,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/text_post_content"
+        android:id="@+id/text_add_post_content"
         android:text="내용"
-        app:layout_constraintTop_toBottomOf="@+id/edit_post_title"
+        app:layout_constraintTop_toBottomOf="@+id/edit_add_post_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="50dp"
@@ -47,8 +47,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edit_post_content"
-        app:layout_constraintTop_toBottomOf="@+id/text_post_content"
+        android:id="@+id/edit_add_post_content"
+        app:layout_constraintTop_toBottomOf="@+id/text_add_post_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="5dp"
@@ -66,7 +66,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/nav_post"
+        android:id="@+id/nav_add_post"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,7 +75,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_post"
+            android:id="@+id/btn_add_post"
             android:text="글 올리기"/>
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

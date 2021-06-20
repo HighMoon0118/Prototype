@@ -1,4 +1,4 @@
-package com.e.prototype.mvvm.feature.community.gossip
+package com.e.prototype.mvvm.feature.community.interview
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.e.prototype.R
 import com.e.prototype.mvvm.feature.community.post.Post
 
-class GossipAdapter(private val onClick: (Post) -> Unit):
-    ListAdapter<Post, GossipAdapter.ViewHolder>(GossipDiffCallback){
+class InterviewAdapter(private val onClick: (Post) -> Unit):
+    ListAdapter<Post, InterviewAdapter.ViewHolder>(InterviewDiffCallback){
 
 
     class ViewHolder(itemView: View, val onClick: (Post) -> Unit) :
@@ -50,7 +50,7 @@ class GossipAdapter(private val onClick: (Post) -> Unit):
 
 }
 
-object GossipDiffCallback : DiffUtil.ItemCallback<Post>() {
+object InterviewDiffCallback : DiffUtil.ItemCallback<Post>() {
     override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
         return oldItem == newItem
     }

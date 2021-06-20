@@ -7,7 +7,13 @@
         android:title="Calendar" />
 
     <item
+        android:id="@+id/bnv_study"
+        android:icon="@drawable/ic_baseline_forum_24"
+        android:title="Study" />
+
+    <item
         android:id="@+id/bnv_community"
         android:icon="@drawable/ic_baseline_article_24"
         android:title="Community" />
+
 </menu>
